@@ -31,4 +31,40 @@ def json_to_excel(json_file, excel_file):
 
 # Example usage
 # excel_to_json('main.xlsx', 'json/input/main.json')
-json_to_excel('json/output/checked.json', 'updated_status_check_category_subcategory.xlsx')
+# json_to_excel('json/output/checked.json', 'updated_status_check_category_subcategory.xlsx')
+
+def print_usage():
+    """Print usage instructions for the Excel-JSON conversion utilities"""
+    print("""
+Usage Examples for Excel-JSON Conversion:
+
+1. Convert Excel to JSON:
+   python main.py excel-to-json <input_excel> <output_json>
+   
+   Example:
+   python main.py excel-to-json data.xlsx output.json
+
+2. Convert JSON to Excel:  
+   python main.py json-to-excel <input_json> <output_excel>
+   
+   Example:
+   python main.py json-to-excel data.json output.xlsx
+""")
+
+if __name__ == "__main__":
+    import sys
+    
+    if len(sys.argv) < 2:
+        print_usage()
+        sys.exit(1)
+        
+    command = sys.argv[1]
+    
+    if command == "excel-to-json" and len(sys.argv) == 4:
+        excel_to_json(sys.argv[2], sys.argv[3])
+    elif command == "json-to-excel" and len(sys.argv) == 4:
+        json_to_excel(sys.argv[2], sys.argv[3])
+    else:
+        print("Invalid command or arguments")
+        print_usage()
+        sys.exit(1)
