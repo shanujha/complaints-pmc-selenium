@@ -2,6 +2,10 @@
 
 This tool helps process and transform grievance management data between Excel and JSON formats, with various data validation and transformation capabilities.
 
+> ⚠️ Don't have python installed? Need to test quickly without commiting to changing things on your machine? This repository has codesspaces enabled. Run the scripts in browser directly, with full terminal support
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=884188197)
+
 
 ## Project Structure
 
