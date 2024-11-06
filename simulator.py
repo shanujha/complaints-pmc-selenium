@@ -18,7 +18,7 @@ def select_option(driver, element_id, value):
     select = Select(driver.find_element(element_id))
     select.select_by_value(str(value))
 
-def automate_dropdowns(json_input_file, json_output_file, driver_path):
+def simulate(json_input_file, json_output_file, driver_path):
     # Load the input JSON data
     data = load_json(json_input_file)
 
@@ -70,4 +70,35 @@ def automate_dropdowns(json_input_file, json_output_file, driver_path):
 
 chrome_driver_path = "C:\\chromium\\driver\\chromedriver.exe"
 
-automate_dropdowns('json/output/final.json', 'json/output/checked.json', chrome_driver_path)
+# simulate('json/output/final.json', 'json/output/checked.json', chrome_driver_path)
+
+
+def print_usage():
+    """Print usage instructions for the dropdown automation script"""
+    print("""
+Usage:
+    python simulator.py <input_json> <output_json> <chromedriver_path>
+
+This script automates dropdown selection on a web form using Selenium:
+- Reads category and subcategory IDs from input JSON
+- Attempts to select matching dropdown values
+- Records success/failure status for each attempt
+- Saves results to output JSON
+
+Example:
+    python simulator.py json/output/final.json json/output/checked.json "C:\\chromium\\driver\\chromedriver.exe"
+
+Requirements:
+- Chrome browser running with remote debugging on port 9222
+- ChromeDriver compatible with installed Chrome version
+- Input JSON file containing categoryId and grievanceSubDeptDetailId fields
+""")
+
+if __name__ == "__main__":
+    import sys
+    
+    if len(sys.argv) != 4:
+        print_usage()
+        sys.exit(1)
+        
+    simulate(sys.argv[1], sys.argv[2], sys.argv[3])

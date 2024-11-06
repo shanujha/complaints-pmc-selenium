@@ -15,4 +15,34 @@ def process():
     add_app_type("json/output/5_prabhag.json", "json/output/final.json")
     pass
 
-process()
+def print_usage():
+    """Print usage instructions for the JSON processing pipeline"""
+    print("""
+Usage:
+    python process-json.py start
+
+This script processes JSON data through multiple transformation steps:
+1. Updates keys in the JSON
+2. Updates peth type values
+3. Updates ward values 
+4. Updates numeric fields
+5. Updates prabhag values
+6. Adds application type
+
+The script expects:
+- Input JSON file at: json/input/main.json
+- Generates intermediate files in: json/output/
+- Final processed file at: json/output/final.json
+
+To run this script's process run:
+python process-json.py start
+""")
+
+if __name__ == "__main__":
+    import sys
+    
+    if len(sys.argv) < 2:
+        print_usage()
+        sys.exit(1)
+        
+    process()
